@@ -25,6 +25,9 @@ public class Customer {
   @Column(nullable = false)
   private String lastname;
 
+  @Column(nullable = false)
+  private String password;
+
   @Column(nullable = false, unique = true)
   private String cpf;
 
