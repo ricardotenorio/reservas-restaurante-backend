@@ -31,7 +31,7 @@ public class Restaurant {
   @Column
   private int capacity;
 
-  @OneToOne
+  @OneToOne(mappedBy = "restaurant")
   @JoinColumn(name = "menu_id", referencedColumnName = "id")
   private Menu menu;
 
