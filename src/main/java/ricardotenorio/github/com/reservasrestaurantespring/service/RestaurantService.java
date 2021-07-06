@@ -18,7 +18,7 @@ public class RestaurantService {
 
   private RestaurantRepository restaurantRepository;
 
-  private final RestaurantMapper restaurantMapper;
+  private final RestaurantMapper restaurantMapper = RestaurantMapper.INSTANCE;
 
   public String createRestaurant(RestaurantDTO restaurantDTO) {
     Restaurant restaurantToSave = restaurantMapper.toModel(restaurantDTO);
@@ -42,7 +42,7 @@ public class RestaurantService {
     return restaurantMapper.toDTO(restaurant);
   }
 
-  public void delete(Long id) throws RestaurantNotFoundException {
+  public void deleteById(Long id) throws RestaurantNotFoundException {
     verifyIfExists(id);
 
     restaurantRepository.deleteById(id);
