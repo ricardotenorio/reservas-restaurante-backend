@@ -13,7 +13,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/restaurant")
+@RequestMapping("/api/restaurants")
 @AllArgsConstructor(onConstructor = @__(@Autowired))
 public class RestaurantController {
 
