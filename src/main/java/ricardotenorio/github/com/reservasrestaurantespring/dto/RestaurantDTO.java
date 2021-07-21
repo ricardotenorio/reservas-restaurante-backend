@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.br.CNPJ;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
@@ -26,13 +25,6 @@ public class RestaurantDTO {
   @NotEmpty
   @Size(min = 11, max = 12)
   private String phoneNumber;
-
-  @NotEmpty
-  @CNPJ
-  private String cnpj;
-
-  @Size(max = 10000)
-  private int capacity;
 
   @Valid
   private MenuDTO menu;

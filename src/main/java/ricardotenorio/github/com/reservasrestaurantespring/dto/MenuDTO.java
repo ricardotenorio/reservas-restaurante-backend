@@ -20,7 +20,6 @@ public class MenuDTO {
   @Size(min = 2, max = 32)
   private String product;
 
-  @NotEmpty
   private Long price;
 
 }

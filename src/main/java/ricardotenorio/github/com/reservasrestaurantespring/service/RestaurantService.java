@@ -49,7 +49,10 @@ public class RestaurantService {
   }
 
   public String updateById(Long id, RestaurantDTO restaurantDTO) throws RestaurantNotFoundException {
-    verifyIfExists(id);
+    Restaurant oldrestaurant = verifyIfExists(id);
+
+    restaurantDTO.setId(id);
+    restaurantDTO.getMenu().setId(oldrestaurant.getMenu().getId());
 
     Restaurant restaurantToUpdate = restaurantMapper.toModel(restaurantDTO);
 

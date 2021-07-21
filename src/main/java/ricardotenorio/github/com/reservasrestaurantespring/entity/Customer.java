@@ -20,16 +20,10 @@ public class Customer {
   private Long id;
 
   @Column(nullable = false)
-  private String firstname;
-
-  @Column(nullable = false)
-  private String lastname;
+  private String name;
 
   @Column(nullable = false)
   private String password;
-
-  @Column(nullable = false, unique = true)
-  private String cpf;
 
   @OneToMany(fetch = FetchType.LAZY,
     mappedBy = "customer")

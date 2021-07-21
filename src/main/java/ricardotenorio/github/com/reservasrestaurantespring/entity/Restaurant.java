@@ -25,13 +25,7 @@ public class Restaurant {
   @Column(nullable = false)
   private String phoneNumber;
 
-  @Column(nullable = false, unique = true)
-  private String cnpj;
-
-  @Column
-  private int capacity;
-
-  @OneToOne(mappedBy = "restaurant")
+  @OneToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "menu_id", referencedColumnName = "id")
   private Menu menu;
 

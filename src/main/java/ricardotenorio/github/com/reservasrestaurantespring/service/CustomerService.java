@@ -8,6 +8,7 @@ import ricardotenorio.github.com.reservasrestaurantespring.entity.Customer;
 import ricardotenorio.github.com.reservasrestaurantespring.exception.CustomerNotFoundException;
 import ricardotenorio.github.com.reservasrestaurantespring.mapper.CustomerMapper;
 import ricardotenorio.github.com.reservasrestaurantespring.repository.CustomerRepository;
+import ricardotenorio.github.com.reservasrestaurantespring.repository.ReservationRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,6 +18,7 @@ import java.util.stream.Collectors;
 public class CustomerService {
 
   private CustomerRepository customerRepository;
+  private ReservationRepository reservationRepository;
 
   private final CustomerMapper customerMapper = CustomerMapper.INSTANCE;
 
@@ -42,7 +44,7 @@ public class CustomerService {
     return customerMapper.toDTO(customer);
   }
 
-  public void delete(Long id) throws CustomerNotFoundException {
+  public void deleteById(Long id) throws CustomerNotFoundException {
     verifyIfExists(id);
 
     customerRepository.deleteById(id);
@@ -51,6 +53,8 @@ public class CustomerService {
   public String updateById(Long id, CustomerDTO customerDTO) throws CustomerNotFoundException {
     verifyIfExists(id);
 
+    customerDTO.setId(id);
+
     Customer customerToUpdate = customerMapper.toModel(customerDTO);
 
     Customer updatedCustomer = customerRepository.save(customerToUpdate);
@@ -58,6 +62,8 @@ public class CustomerService {
     return "Updated customer with ID " + updatedCustomer.getId();
 
   }
+
+
 
   private Customer verifyIfExists(Long id) throws CustomerNotFoundException {
     return customerRepository.findById(id)

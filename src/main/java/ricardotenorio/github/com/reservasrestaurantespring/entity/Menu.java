@@ -24,7 +24,7 @@ public class Menu {
   @Column(nullable = false)
   private Long price;
 
-  @OneToOne
+  @OneToOne(mappedBy = "menu")
   private Restaurant restaurant;
 
 }
