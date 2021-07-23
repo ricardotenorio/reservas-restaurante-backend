@@ -11,6 +11,7 @@ import ricardotenorio.github.com.reservasrestaurantespring.service.CustomerServi
 import javax.validation.Valid;
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/customers")
 @AllArgsConstructor(onConstructor = @__(@Autowired))
